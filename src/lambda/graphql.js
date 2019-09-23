@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const { ApolloServer, gql } = require("apollo-server-lambda")
-const { makeExecutableSchema } = require("graphql-tools")
+const { makeExecutableSchema, logger } = require("graphql-tools")
 
 mongoose.connect(process.env.GATSBY_DATABASE_URL, { useNewUrlParser: true })
 
