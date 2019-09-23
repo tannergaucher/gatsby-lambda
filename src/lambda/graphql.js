@@ -39,18 +39,18 @@ const resolvers = {
   },
 }
 
-const typeDefs = gql`
+const typeDefs = `
   type Message {
     text: String!
   }
 
   type Query {
     hello: String
-    messages: [Message]!
+    messages: [Message!]
   }
 
   type Mutation {
-    createMessage(text: String!): Message
+    createMessage(text: String!): Message!
   }
 `
 
