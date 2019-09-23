@@ -2,7 +2,7 @@ const { ApolloServer, gql } = require("apollo-server-lambda")
 
 const typeDefs = gql`
   type Query {
-    hello: String!
+    hello: String
   }
 `
 
@@ -21,4 +21,9 @@ const server = new ApolloServer({
   playground: true,
 })
 
-exports.handler = server.createHandler()
+exports.handler = server.createHandler({
+  cors: {
+    credentials: true,
+    origin: "http://localhost:8888",
+  },
+})

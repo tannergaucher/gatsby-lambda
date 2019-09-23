@@ -3,5 +3,5 @@ import fetch from "isomorphic-fetch"
 
 export const client = new ApolloClient({
   fetch,
-  uri: process.env.GATSBY_SERVER_URL,
+  uri: process.env.GATSBY_SERVER_URL + "/.netlify/functions/graphql",
 })
