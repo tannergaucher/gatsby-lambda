@@ -41,7 +41,6 @@ const resolvers = {
 const typeDefs = gql`
   type Message {
     text: String
-    _id: ID!
   }
 
   type Query {

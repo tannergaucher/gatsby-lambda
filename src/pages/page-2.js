@@ -32,7 +32,7 @@ const MESSAGES_QUERY = gql`
   query MESSAGES_QUERY {
     messages {
       text
-      _id
+      id
     }
   }
 `
