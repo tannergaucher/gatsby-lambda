@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const { ApolloServer } = require("apollo-server-lambda")
-const { models } = require("../models")
+const models = require("../models")
 const resolvers = require("../resolvers")
 const typeDefs = require("../schema")
 
