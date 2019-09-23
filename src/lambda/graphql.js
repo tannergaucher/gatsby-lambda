@@ -23,7 +23,9 @@ const resolvers = {
     },
 
     messages: async (parent, args, { db }) => {
-      const messages = await db.Message.find()
+      // const messages = await db.Message.find()
+      // return messages
+      const messages = [{ text: "tsdfsd", id: 1 }, { text: "dodod", id: 2 }]
       return messages
     },
   },
