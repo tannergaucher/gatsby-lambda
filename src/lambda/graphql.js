@@ -24,6 +24,6 @@ const server = new ApolloServer({
 exports.handler = server.createHandler({
   cors: {
     credentials: true,
-    origin: "http://localhost:8888",
+    origin: process.env.GATSBY_CLIENT_URL,
   },
 })
