@@ -1,17 +1,30 @@
 const mongoose = require("mongoose")
 const { ApolloServer } = require("apollo-server-lambda")
-const { models: db } = require("../models")
+// const { models: db } = require("../models")
 const resolvers = require("../resolvers")
 const typeDefs = require("../schema")
 
 mongoose.connect(process.env.GATSBY_DATABASE_URL, { useNewUrlParser: true })
+
+const messageSchema = new mongoose.Schema({
+  text: {
+    type: String,
+    required: true,
+  },
+})
+
+const Message = mongoose.model("Message", messageSchema)
+
+const models = {
+  Message,
+}
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: async => {
     return {
-      db,
+      db: models,
     }
   },
   introspection: true,
