@@ -21,9 +21,9 @@ const resolvers = {
     hello: () => {
       return `Hello from apollo-server-lambda`
     },
+
     messages: async (parent, args, { db }) => {
       const messages = await db.Message.find()
-
       return messages
     },
   },
@@ -32,7 +32,6 @@ const resolvers = {
       const message = await db.Message.create({
         text,
       })
-
       return message
     },
   },
@@ -40,12 +39,13 @@ const resolvers = {
 
 const typeDefs = gql`
   type Message {
-    text: String!
+    text: String
+    id: ID!
   }
 
   type Query {
     hello: String
-    messages: [Message!]
+    messages: [Message]
   }
 
   type Mutation {
@@ -56,7 +56,7 @@ const typeDefs = gql`
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: async => {
+  context: () => {
     return {
       db: models,
     }

@@ -16,6 +16,11 @@ export default function SecondPage() {
       <SEO title="Page two" />
       <h1>Hi from the second page</h1>
       <p>Welcome to page 2</p>
+      {loading && `Loading messages...`}
+      {error && `${error.message}`}
+      {data &&
+        data.messages &&
+        data.messages.map(message => <p key={message.id}>{message.text}</p>)}
       <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
