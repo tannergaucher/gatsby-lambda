@@ -23,9 +23,8 @@ const resolvers = {
     },
 
     messages: async (parent, args, { db }) => {
-      const messages = await db.Message.find()
-      const transformedMessages = messages.map(message => message.toJSON())
-      return transformedMessages
+      const messages = await db.Message.find().lean()
+      return messages
     },
   },
   Mutation: {
@@ -33,7 +32,8 @@ const resolvers = {
       const message = await db.Message.create({
         text,
       })
-      return message.toJSON()
+
+      return message
     },
   },
 }
@@ -41,7 +41,6 @@ const resolvers = {
 const typeDefs = gql`
   type Message {
     text: String
-    id: ID!
   }
 
   type Query {
