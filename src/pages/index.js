@@ -15,16 +15,15 @@ const HELLO_QUERY = gql`
 
 export default function IndexPage() {
   const { data, loading, error } = useQuery(HELLO_QUERY)
-  console.log(loading)
-  console.log(error)
-  console.log(data)
 
   return (
     <Layout>
       <SEO title="Home" />
-      <h1>Hi </h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
+      <h1>Hi there </h1>
+      <p>Welcome to your new Gatsby app.</p>
+      {loading && `Loading from server..`}
+      {error && `${error.message}`}
+      {data && data.hello && `${data.hello}`}
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
         <Image />
       </div>

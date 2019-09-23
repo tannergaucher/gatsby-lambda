@@ -9,7 +9,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     hello: () => {
-      return `Hello`
+      return `Hello from apollo-server-lambda!`
     },
   },
 }
