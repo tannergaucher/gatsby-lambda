@@ -24,15 +24,24 @@ const resolvers = {
 
     messages: async (parent, args, { db }) => {
       const messages = await db.Message.find().lean()
-      return messages
+      const test = []
+
+      messages.map(message => {
+        test.push({
+          text: message.text,
+          id: message._id,
+        })
+      })
+
+      return test
     },
   },
+
   Mutation: {
     createMessage: async (parent, { text }, { db }) => {
       const message = await db.Message.create({
         text,
       })
-
       return message
     },
   },
