@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const { ApolloServer, gql } = require("apollo-server-lambda")
+const { makeExecutableSchema } = require("graphql-tools")
 
 mongoose.connect(process.env.GATSBY_DATABASE_URL, { useNewUrlParser: true })
 
@@ -54,9 +55,13 @@ const typeDefs = gql`
   }
 `
 
-const server = new ApolloServer({
+const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
+})
+
+const server = new ApolloServer({
+  schema,
   context: async => {
     return {
       db: models,

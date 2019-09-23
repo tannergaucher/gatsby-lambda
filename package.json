@@ -17,6 +17,7 @@
     "gatsby-source-filesystem": "^2.1.26",
     "gatsby-transformer-sharp": "^2.2.16",
     "graphql": "^14.5.7",
+    "graphql-tools": "^4.0.5",
     "isomorphic-fetch": "^2.2.1",
     "mongoose": "^5.7.1",
     "prop-types": "^15.7.2",
