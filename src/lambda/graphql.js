@@ -39,7 +39,7 @@ const resolvers = {
   },
 }
 
-const typeDefs = `
+const typeDefs = gql`
   type Message {
     text: String!
   }
@@ -50,7 +50,7 @@ const typeDefs = `
   }
 
   type Mutation {
-    createMessage(text: String!): Message!
+    createMessage(text: String!): Message
   }
 `
 
@@ -67,7 +67,6 @@ const server = new ApolloServer({
       db: models,
     }
   },
-  introspection: true,
   playground: true,
 })
 
