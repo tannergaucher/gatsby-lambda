@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 import gql from "graphql-tag"
-import { useMutation } from "@apollo/react-hooks"
+import { useMutation, useQuery } from "@apollo/react-hooks"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -18,9 +18,9 @@ export default function SecondPage() {
   )
 }
 
-const CREATE_MESSAGE_MUTATION = gql`
-  mutation CREATE_MESSAGE_MUTATION($text: String!) {
-    createMessage(text: $text) {
+const MESSAGES_QUERY = gql`
+  query MESSAGES_QUERY {
+    messages {
       text
     }
   }
@@ -28,14 +28,10 @@ const CREATE_MESSAGE_MUTATION = gql`
 
 function CreateMessage() {
   const [text, setText] = useState("")
-  const [createMessage, { loading, error }] = useMutation(
-    CREATE_MESSAGE_MUTATION,
-    {
-      variables: {
-        text,
-      },
-    }
-  )
+
+  const { data, loading, error } = useQuery(MESSAGES_QUERY)
+
+  console.log(data, loading, error)
 
   return (
     <fieldset disabled={loading}>
@@ -43,8 +39,6 @@ function CreateMessage() {
       <form
         onSubmit={async e => {
           e.preventDefault()
-          const res = await createMessage()
-          console.log(res)
         }}
       >
         <input
