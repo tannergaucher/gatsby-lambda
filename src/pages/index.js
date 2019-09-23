@@ -19,7 +19,7 @@ export default function IndexPage() {
   return (
     <Layout>
       <SEO title="Home" />
-      <h1>Hi there </h1>
+      <h1>Hi</h1>
       <p>Welcome to your new Gatsby app.</p>
       {loading && `Loading from server..`}
       {error && `${error.message}`}
