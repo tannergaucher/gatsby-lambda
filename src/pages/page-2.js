@@ -11,6 +11,8 @@ export default function SecondPage() {
 
   console.log(loading, error, data)
 
+  console.log(data)
+
   return (
     <Layout>
       <SEO title="Page two" />
@@ -20,7 +22,7 @@ export default function SecondPage() {
       {error && `${error.message}`}
       {data &&
         data.messages &&
-        data.messages.map(message => <p key={message.id}>{message.text}</p>)}
+        data.messages.map(message => <p key={message._id}>{message.text}</p>)}
       <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
@@ -30,6 +32,7 @@ const MESSAGES_QUERY = gql`
   query MESSAGES_QUERY {
     messages {
       text
+      _id
     }
   }
 `

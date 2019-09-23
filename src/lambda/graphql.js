@@ -23,9 +23,8 @@ const resolvers = {
     },
 
     messages: async (parent, args, { db }) => {
-      // const messages = await db.Message.find()
-      // return messages
-      const messages = [{ text: "tsdfsd", id: 1 }, { text: "dodod", id: 2 }]
+      const messages = await db.Message.find()
+
       return messages
     },
   },
@@ -42,7 +41,7 @@ const resolvers = {
 const typeDefs = gql`
   type Message {
     text: String
-    id: ID!
+    _id: ID!
   }
 
   type Query {

@@ -24,6 +24,7 @@ export default function IndexPage() {
       {loading && `Loading from server..`}
       {error && `${error.message}`}
       {data && data.hello && `${data.hello}`}
+
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
         <Image />
       </div>
