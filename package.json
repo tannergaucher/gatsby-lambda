@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.1",
+    "apollo-boost": "^0.4.4",
     "apollo-server-lambda": "^2.9.3",
     "gatsby": "^2.15.20",
     "gatsby-image": "^2.2.20",
@@ -14,6 +16,8 @@
     "gatsby-plugin-sharp": "^2.2.25",
     "gatsby-source-filesystem": "^2.1.26",
     "gatsby-transformer-sharp": "^2.2.16",
+    "graphql": "^14.5.7",
+    "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

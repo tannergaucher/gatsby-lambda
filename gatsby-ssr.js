@@ -1,7 +1,8 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+const React = require("react")
+const { ApolloProvider } = require("@apollo/react-hooks")
 
-// You can delete this file if you're not using it
+const { client } = require("./src/components/apollo/client")
+
+exports.wrapRootElement = ({ element }) => (
+  <ApolloProvider client={client}>{element}</ApolloProvider>
+)
