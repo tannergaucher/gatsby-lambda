@@ -1,22 +1,20 @@
-const { ApolloServer, gql } = require("apollo-server-lambda")
+const mongoose = require("mongoose")
+const { ApolloServer } = require("apollo-server-lambda")
+const { models: db } = require("../models")
+const resolvers = require("../resolvers")
+const typeDefs = require("../schema")
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`
-
-const resolvers = {
-  Query: {
-    hello: () => {
-      return `Hello from apollo-server-lambda!`
-    },
-  },
-}
+mongoose.connect(process.env.GATSBY_DATABASE_URL, { useNewUrlParser: true })
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: async => {
+    return {
+      db,
+    }
+  },
+
   introspection: true,
   playground: true,
 })
