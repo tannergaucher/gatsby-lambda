@@ -58,6 +58,7 @@ const typeDefs = gql`
 const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
+  logger,
 })
 
 const server = new ApolloServer({

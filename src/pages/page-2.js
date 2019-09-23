@@ -8,6 +8,9 @@ import SEO from "../components/seo"
 
 export default function SecondPage() {
   const { data, loading, error } = useQuery(MESSAGES_QUERY)
+
+  console.log(loading, error, data)
+
   return (
     <Layout>
       <SEO title="Page two" />
