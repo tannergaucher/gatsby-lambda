@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const { ApolloServer } = require("apollo-server-lambda")
-const models = require("../models")
+const { models: db } = require("../models")
 const resolvers = require("../resolvers")
 const typeDefs = require("../schema")
 
@@ -11,10 +11,9 @@ const server = new ApolloServer({
   resolvers,
   context: async => {
     return {
-      db: models,
+      db,
     }
   },
-
   introspection: true,
   playground: true,
 })
