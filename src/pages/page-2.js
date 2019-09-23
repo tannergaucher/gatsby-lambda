@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import gql from "graphql-tag"
 import { useQuery } from "@apollo/react-hooks"
@@ -22,7 +22,7 @@ export default function SecondPage() {
       {error && `${error.message}`}
       {data &&
         data.messages &&
-        data.messages.map(message => <p key={message._id}>{message.text}</p>)}
+        data.messages.map(message => <p key={message.id}>{message.text}</p>)}
       <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
