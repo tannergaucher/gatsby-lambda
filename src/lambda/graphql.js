@@ -24,8 +24,8 @@ const resolvers = {
 
     messages: async (parent, args, { db }) => {
       const messages = await db.Message.find()
-
-      return messages
+      const transformedMessages = messages.map(message => message.toJSON())
+      return transformedMessages
     },
   },
   Mutation: {
@@ -33,7 +33,7 @@ const resolvers = {
       const message = await db.Message.create({
         text,
       })
-      return message
+      return message.toJSON()
     },
   },
 }
