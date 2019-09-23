@@ -46,8 +46,7 @@ const typeDefs = gql`
   }
 
   type Message {
-    id: ID!
-    text: String
+    text: String!
   }
 
   type Mutation {
