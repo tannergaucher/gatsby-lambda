@@ -4,4 +4,4 @@ const models = {
   Message,
 }
 
-module.exports = models
+module.exports = { models }
