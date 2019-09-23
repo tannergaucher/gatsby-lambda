@@ -22,32 +22,31 @@ const resolvers = {
     hello: () => {
       return `Hello from apollo-server-lambda`
     },
-
     messages: async (parent, args, { db }) => {
-      const myMessages = await db.Message.find()
+      const messages = await db.Message.find()
 
-      return myMessages
+      return messages
     },
   },
   Mutation: {
     createMessage: async (parent, { text }, { db }) => {
-      const newMessage = await db.Message.create({
+      const message = await db.Message.create({
         text,
       })
 
-      return newMessage
+      return message
     },
   },
 }
 
 const typeDefs = gql`
+  type Message {
+    text: String!
+  }
+
   type Query {
     hello: String
     messages: [Message]!
-  }
-
-  type Message {
-    text: String!
   }
 
   type Mutation {
